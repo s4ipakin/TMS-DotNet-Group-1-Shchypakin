@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>TMS.DotNet.Group._1.Shchypakin.Homework_8.Ligic</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TMS.DotNet.Group.1.Shchypakin.Homework-8.Data\TMS.DotNet.Group.1.Shchypakin.Homework-8.Data.csproj" />
+  </ItemGroup>
+
+</Project>
