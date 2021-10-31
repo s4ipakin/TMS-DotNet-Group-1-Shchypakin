@@ -16,7 +16,7 @@ namespace TMS.DotNet.Group._1.Shchypakin.Homework_8.Data
         public Cash()
         {
             Random random = new();
-            IsWorking = random.NextDouble() >= 0.5;  
+            IsWorking = random.NextDouble() >= 0.5;
         }
 
         public void GetMoney()

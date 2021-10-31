@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using TMS.DotNet.Group._1.Shchypakin.Homework_8.Data;
@@ -28,6 +27,9 @@ namespace TMS.DotNet.Group._1.Shchypakin.Homework_8.Ligic
             allProducts.Add(ProductName.Tuna, new Product(ProductName.Tuna, 35));
         }
 
+        /// <summary>
+        /// Sets Cashes and assignes their indexes and delay time
+        /// </summary>
         public void SetCashes()
         {
             Random random = new Random();
@@ -35,11 +37,11 @@ namespace TMS.DotNet.Group._1.Shchypakin.Homework_8.Ligic
             for (int i = 1; i < 6; i++)
             {
                 _cashes.Add(new S() { CashIndex = i, CasherDelayTime = random.Next(1000, 3500) });
-                if (_cashes[i-1].IsWorking)
+                if (_cashes[i - 1].IsWorking)
                 {
                     isAnyWorking = true;
                     Console.WriteLine($"Cash {i} is working");
-                }               
+                }
             }
 
             if (!isAnyWorking)
@@ -49,10 +51,12 @@ namespace TMS.DotNet.Group._1.Shchypakin.Homework_8.Ligic
                 Console.WriteLine($"Cash {_cashes[workingCashListIndex].CashIndex} is working");
             }
 
-
             Console.WriteLine($"Cashes are set");
         }
 
+        /// <summary>
+        /// Runs the shop
+        /// </summary>
         public void Run()
         {
             Task[] cashTasks = new Task[5];
@@ -80,7 +84,5 @@ namespace TMS.DotNet.Group._1.Shchypakin.Homework_8.Ligic
 
             Task.WaitAll(cashTasks);
         }
-
-
     }
 }
