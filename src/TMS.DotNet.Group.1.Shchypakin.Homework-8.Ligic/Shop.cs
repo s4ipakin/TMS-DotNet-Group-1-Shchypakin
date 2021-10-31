@@ -18,13 +18,11 @@ namespace TMS.DotNet.Group._1.Shchypakin.Homework_8.Ligic
 
         public Shop()
         {
-            allProducts.Add(ProductName.Beaf, new Product(ProductName.Beaf, 15));
-            allProducts.Add(ProductName.Bread, new Product(ProductName.Bread, 3));
-            allProducts.Add(ProductName.Wine, new Product(ProductName.Wine, 150));
-            allProducts.Add(ProductName.Cheese, new Product(ProductName.Cheese, 19));
-            allProducts.Add(ProductName.Lemon, new Product(ProductName.Lemon, 10));
-            allProducts.Add(ProductName.Melon, new Product(ProductName.Melon, 25));
-            allProducts.Add(ProductName.Tuna, new Product(ProductName.Tuna, 35));
+            Random random = new Random();
+            foreach (ProductName product in (ProductName[])Enum.GetValues(typeof(ProductName)))
+            {
+                allProducts.Add(product, new Product(product, random.Next(5, 150)));
+            }
         }
 
         /// <summary>
