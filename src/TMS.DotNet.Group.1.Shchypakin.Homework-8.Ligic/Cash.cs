@@ -12,7 +12,7 @@ namespace TMS.DotNet.Group._1.Shchypakin.Homework_8.Data
         public int CasherDelayTime { get; set; }
         public bool IsWorking { get; set; }
         public Queue<ICustomer> customers = new();
-
+        private double _allCash = default;
         public Cash()
         {
             Random random = new();
@@ -30,15 +30,22 @@ namespace TMS.DotNet.Group._1.Shchypakin.Homework_8.Data
                     Thread.Sleep(CasherDelayTime);
                     ICustomer customer = customers.Dequeue();
                     var products = customer.GetBoughtProducts();
-                    double allCash = default;
-                    Console.WriteLine($"Cash {CashIndex}.The customer's check:");
+                    Console.WriteLine($"Cash {CashIndex}");
+                    Console.WriteLine("The customer's check:");
+                    Console.WriteLine();
+                    double sum = 0.0;
                     foreach (var product in products)
                     {
-                        allCash += product.Price;
+                        sum += product.Price;
+                        _allCash += product.Price;
                         Console.WriteLine($"{product.Name}.....{product.Price}");
                     }
-                    Console.WriteLine($"Total sum:..... {allCash}");
-                    Console.WriteLine($"customers remain in line: {customers.Count}");
+                    Console.WriteLine();
+                    Console.WriteLine($"Sum:.....{sum}");
+                    Console.WriteLine();
+                    Console.WriteLine($"Total money int the cash:..... {_allCash}");
+                    Console.WriteLine($"Customers remain in line: {customers.Count}");
+                    Console.WriteLine(new string('=', 50));
                     Console.WriteLine();
                 }
             }
@@ -54,6 +61,7 @@ namespace TMS.DotNet.Group._1.Shchypakin.Homework_8.Data
             customers.Enqueue(customer);
             Console.WriteLine($"A custemer took line in {CashIndex}."
                 + $" Line lenght is  {customers.Count}");
+            Console.WriteLine(new string('=', 50));
             Console.WriteLine();
         }
     }
