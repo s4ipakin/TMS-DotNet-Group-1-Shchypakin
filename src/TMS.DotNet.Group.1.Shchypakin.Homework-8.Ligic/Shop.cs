@@ -55,10 +55,12 @@ namespace TMS.DotNet.Group._1.Shchypakin.Homework_8.Ligic
 
         public void Run()
         {
+            Task[] cashTasks = new Task[5];
+            int taskIndex = 0;
             foreach (S cash in _cashes)
             {
-                Thread cashThread = new Thread(cash.GetMoney);
-                cashThread.Start();
+                cashTasks[taskIndex] = Task.Factory.StartNew(() => cash.GetMoney());
+                taskIndex++;
             }
 
             for (int i = 0; i < 30; i++)
@@ -75,6 +77,8 @@ namespace TMS.DotNet.Group._1.Shchypakin.Homework_8.Ligic
                 S leastBusyCash = _cashes.Where(x => x.IsWorking).OrderBy(x => x.GetQueueCount()).First();
                 leastBusyCash.TakeQueue(customer);
             }
+
+            Task.WaitAll(cashTasks);
         }
 
 

@@ -37,7 +37,7 @@ namespace TMS.DotNet.Group._1.Shchypakin.Homework_8.Data
                         allCash += product.Price;
                         Console.WriteLine($"{product.Name}.....{product.Price}");
                     }
-                    Console.WriteLine($"Total sum: {allCash}");
+                    Console.WriteLine($"Total sum:..... {allCash}");
                     Console.WriteLine($"customers remain in line: {customers.Count}");
                     Console.WriteLine();
                 }
