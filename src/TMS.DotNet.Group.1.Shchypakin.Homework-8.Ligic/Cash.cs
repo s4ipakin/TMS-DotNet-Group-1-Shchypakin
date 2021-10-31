@@ -13,6 +13,12 @@ namespace TMS.DotNet.Group._1.Shchypakin.Homework_8.Data
         public bool IsWorking { get; set; }
         public Queue<ICustomer> customers = new();
 
+        public Cash()
+        {
+            Random random = new();
+            IsWorking = random.NextDouble() >= 0.5;  
+        }
+
         public void GetMoney()
         {
             Random rnd = new();
@@ -42,7 +48,8 @@ namespace TMS.DotNet.Group._1.Shchypakin.Homework_8.Data
         public void TakeQueue(ICustomer customer)
         {
             customers.Enqueue(customer);
-            Console.WriteLine($"Number of customers in line in Cash {CashIndex} is  {customers.Count}");
+            Console.WriteLine($"A custemer took line in {CashIndex}."
+                + $" Line lenght is  {customers.Count}");
         }
     }
 }

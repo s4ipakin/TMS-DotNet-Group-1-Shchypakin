@@ -30,11 +30,25 @@ namespace TMS.DotNet.Group._1.Shchypakin.Homework_8.Ligic
 
         public void SetCashes()
         {
-            _cashes.Add(new S() { CashIndex = 1, CasherDelayTime = 1200, IsWorking = true });
-            _cashes.Add(new S() { CashIndex = 2, CasherDelayTime = 2200, IsWorking = true });
-            _cashes.Add(new S() { CashIndex = 3, CasherDelayTime = 2900, IsWorking = true });
-            _cashes.Add(new S() { CashIndex = 4, CasherDelayTime = 1000, IsWorking = true });
-            _cashes.Add(new S() { CashIndex = 5, CasherDelayTime = 3200, IsWorking = true });
+            Random random = new Random();
+            bool isAnyWorking = false;
+            for (int i = 1; i < 6; i++)
+            {
+                _cashes.Add(new S() { CashIndex = i, CasherDelayTime = random.Next(1000, 3500) });
+                if (_cashes[i-1].IsWorking)
+                {
+                    isAnyWorking = true;
+                    Console.WriteLine($"Cash {i} is working");
+                }               
+            }
+
+            if (!isAnyWorking)
+            {
+                int workingCashListIndex = random.Next(0, _cashes.Count - 1);
+                _cashes[workingCashListIndex].IsWorking = true;
+                Console.WriteLine($"Cash {_cashes[workingCashListIndex].CashIndex} is working");
+            }
+
 
             Console.WriteLine($"Cashes are set");
         }
