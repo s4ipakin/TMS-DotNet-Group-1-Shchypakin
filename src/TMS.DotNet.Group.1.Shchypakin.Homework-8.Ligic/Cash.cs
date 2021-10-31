@@ -6,12 +6,18 @@ using TMS.DotNet.Group._1.Shchypakin.Homework_8.Ligic.Interfaces;
 
 namespace TMS.DotNet.Group._1.Shchypakin.Homework_8.Data
 {
-    internal class Cash : ICash
+    public class Cash : ICash
     {
         public int CashIndex { get; set; }
         public int CasherDelayTime { get; set; }
         public bool IsWorking { get; set; }
         public Queue<ICustomer> customers = new();
+
+        public Cash()
+        {
+            Random random = new();
+            IsWorking = random.NextDouble() >= 0.5;
+        }
 
         public void GetMoney()
         {
@@ -25,11 +31,15 @@ namespace TMS.DotNet.Group._1.Shchypakin.Homework_8.Data
                     ICustomer customer = customers.Dequeue();
                     var products = customer.GetBoughtProducts();
                     double allCash = default;
+                    Console.WriteLine($"Cash {CashIndex}.The customer's check:");
                     foreach (var product in products)
                     {
                         allCash += product.Price;
+                        Console.WriteLine($"{product.Name}.....{product.Price}");
                     }
-                    Console.WriteLine($"Cash {CashIndex} money: {allCash}, customers remain in line: {customers.Count}");
+                    Console.WriteLine($"Total sum:..... {allCash}");
+                    Console.WriteLine($"customers remain in line: {customers.Count}");
+                    Console.WriteLine();
                 }
             }
         }
@@ -42,7 +52,9 @@ namespace TMS.DotNet.Group._1.Shchypakin.Homework_8.Data
         public void TakeQueue(ICustomer customer)
         {
             customers.Enqueue(customer);
-            Console.WriteLine($"Number of customers in line in Cash {CashIndex} is  {customers.Count}");
+            Console.WriteLine($"A custemer took line in {CashIndex}."
+                + $" Line lenght is  {customers.Count}");
+            Console.WriteLine();
         }
     }
 }

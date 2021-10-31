@@ -19,10 +19,11 @@ namespace TMS.DotNet.Group._1.Shchypakin.Homework_8.Ligic
             List<int> productTypes = Enum.GetValues(typeof(ProductName))
                    .OfType<ProductName>().Select(x => (int)x)
                    .ToList();
-            int productType = productTypes[random.Next(0, productTypes.Count - 1)];
+            int productType;
 
             for (int i = 1; i <= productsCount; i++)
             {
+                productType = productTypes[random.Next(0, productTypes.Count - 1)];
                 boughtProducts.Add(allProducts[(ProductName)productType]);
             }
         }
