@@ -6,7 +6,7 @@ using TMS.DotNet.Group._1.Shchypakin.Homework_8.Ligic.Interfaces;
 
 namespace TMS.DotNet.Group._1.Shchypakin.Homework_8.Data
 {
-    internal class Cash : ICash
+    public class Cash : ICash
     {
         public int CashIndex { get; set; }
         public int CasherDelayTime { get; set; }
