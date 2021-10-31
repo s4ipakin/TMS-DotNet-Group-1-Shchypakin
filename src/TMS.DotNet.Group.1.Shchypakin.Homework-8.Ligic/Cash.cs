@@ -31,11 +31,15 @@ namespace TMS.DotNet.Group._1.Shchypakin.Homework_8.Data
                     ICustomer customer = customers.Dequeue();
                     var products = customer.GetBoughtProducts();
                     double allCash = default;
+                    Console.WriteLine($"Cash {CashIndex}.The customer's check:");
                     foreach (var product in products)
                     {
                         allCash += product.Price;
+                        Console.WriteLine($"{product.Name}.....{product.Price}");
                     }
-                    Console.WriteLine($"Cash {CashIndex} money: {allCash}, customers remain in line: {customers.Count}");
+                    Console.WriteLine($"Total sum: {allCash}");
+                    Console.WriteLine($"customers remain in line: {customers.Count}");
+                    Console.WriteLine();
                 }
             }
         }
@@ -50,6 +54,7 @@ namespace TMS.DotNet.Group._1.Shchypakin.Homework_8.Data
             customers.Enqueue(customer);
             Console.WriteLine($"A custemer took line in {CashIndex}."
                 + $" Line lenght is  {customers.Count}");
+            Console.WriteLine();
         }
     }
 }

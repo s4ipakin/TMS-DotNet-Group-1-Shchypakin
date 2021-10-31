@@ -55,9 +55,9 @@ namespace TMS.DotNet.Group._1.Shchypakin.Homework_8.Ligic
 
         public void Run()
         {
-            for (int i = 0; i < 5; i++)
+            foreach (S cash in _cashes)
             {
-                Thread cashThread = new Thread(_cashes[i].GetMoney);
+                Thread cashThread = new Thread(cash.GetMoney);
                 cashThread.Start();
             }
 
@@ -75,14 +75,6 @@ namespace TMS.DotNet.Group._1.Shchypakin.Homework_8.Ligic
                 S leastBusyCash = _cashes.Where(x => x.IsWorking).OrderBy(x => x.GetQueueCount()).First();
                 leastBusyCash.TakeQueue(customer);
             }
-
-
-
-            //foreach (P customer in _customers)
-            //{
-            //    Thread customerthread = new Thread(new ParameterizedThreadStart(customer.TakeQueue));
-            //    customerthread.Start(_cashes);
-            //}
         }
 
 
