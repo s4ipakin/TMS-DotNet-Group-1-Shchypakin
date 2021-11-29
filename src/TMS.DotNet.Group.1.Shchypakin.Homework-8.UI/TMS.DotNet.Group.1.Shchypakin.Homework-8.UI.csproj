@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>TMS.DotNet.Group._1.Shchypakin.Homework_8.UI</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TMS.DotNet.Group.1.Shchypakin.Homework-8.Ligic\TMS.DotNet.Group.1.Shchypakin.Homework-8.Ligic.csproj" />
+  </ItemGroup>
+
+</Project>
